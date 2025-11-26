@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andreas Waldis – NLP Researcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-ink: #2d2a2e;
+            --color-muted: #6e6a6f;
+            --color-light: rgba(255,255,255,0.6);
+            --color-border: rgba(0,0,0,0.06);
+            --pink: #f8a5c2;
+            --peach: #f7b389;
+            --orange: #f5a962;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-main);
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--color-ink);
+            font-weight: 400;
+            min-height: 100vh;
+            background: linear-gradient(180deg, 
+                #fef1f3 0%, 
+                #fdf0f2 5%,
+                #fef3ed 25%,
+                #fef6ea 50%,
+                #fff8e8 75%,
+                #fffaf5 100%
+            );
+            background-attachment: fixed;
+        }
+
+        a {
+            color: #d46a8a;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+        a:hover { opacity: 0.7; }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .hero {
+            padding: 4.5rem 0 3.5rem;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .profile-photo {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            object-fit: cover;
+            border: 4px solid rgba(255,255,255,0.8);
+            box-shadow: 0 8px 32px rgba(212,106,138,0.15);
+            background: rgba(255,255,255,0.5);
+        }
+
+        .header-text h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.4rem;
+            background: linear-gradient(135deg, #d46a8a 0%, #e8956d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-text .title {
+            font-size: 1rem;
+            color: var(--color-muted);
+            margin-bottom: 0.8rem;
+            font-weight: 400;
+        }
+
+        .header-text .affiliations {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: var(--color-muted);
+        }
+        .header-text .affiliations a {
+            color: var(--color-ink);
+            text-decoration: underline;
+            text-decoration-color: rgba(0,0,0,0.2);
+            text-underline-offset: 2px;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            background: linear-gradient(180deg, rgba(254,241,243,0.95) 0%, rgba(254,243,237,0.95) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--color-muted);
+        }
+        nav a:hover { color: var(--color-ink); opacity: 1; }
+
+        /* Sections */
+        section {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+        section:last-of-type { border-bottom: none; }
+
+        section h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #d46a8a 0%, #e8956d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About */
+        .about-text p { margin-bottom: 1rem; color: #4a4648; }
+        .about-text p:last-child { margin-bottom: 0; }
+
+        .research-interests {
+            margin-top: 1.5rem;
+            padding: 1.25rem 1.5rem;
+            background: rgba(255,255,255,0.5);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.8);
+            box-shadow: 0 2px 12px rgba(212,106,138,0.06);
+        }
+
+        .research-interests h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--color-ink);
+        }
+
+        .research-interests ul {
+            list-style: none;
+            font-size: 0.9rem;
+            color: #5a5658;
+        }
+
+        .research-interests li {
+            padding: 0.3rem 0 0.3rem 1.2rem;
+            position: relative;
+        }
+        .research-interests li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.75rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--pink), var(--orange));
+        }
+
+        .contact-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .contact-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Publications */
+        .publication-list { list-style: none; }
+
+        .publication-item {
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--color-border);
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 1.25rem;
+            align-items: start;
+        }
+        .publication-item:first-child { padding-top: 0; }
+        .publication-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+        .pub-image {
+            width: 100px;
+            height: 68px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.5);
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .pub-image svg { width: 100%; height: 100%; }
+
+        .pub-content { flex: 1; }
+
+        .pub-meta {
+            font-size: 0.75rem;
+            color: var(--color-muted);
+            margin-bottom: 0.35rem;
+            font-weight: 500;
+        }
+
+        .pub-title {
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+            line-height: 1.4;
+        }
+        .pub-title a { color: var(--color-ink); }
+        .pub-title a:hover { opacity: 0.7; }
+
+        .pub-authors {
+            font-size: 0.85rem;
+            color: var(--color-muted);
+        }
+        .pub-authors strong {
+            color: var(--color-ink);
+            font-weight: 500;
+        }
+
+        /* Talks & Organization */
+        .item-list { list-style: none; }
+
+        .item-row {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--color-border);
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 1rem;
+            align-items: start;
+        }
+        .item-row:first-child { padding-top: 0; }
+        .item-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+        .item-year {
+            font-size: 0.85rem;
+            color: var(--color-muted);
+            font-weight: 500;
+        }
+
+        .item-content { flex: 1; }
+        .item-title {
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+            color: var(--color-ink);
+        }
+        .item-meta {
+            font-size: 0.85rem;
+            color: var(--color-muted);
+        }
+
+        /* Service */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-item {
+            background: rgba(255,255,255,0.4);
+            padding: 1.25rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+
+        .service-item h3 {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--color-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-item p {
+            font-size: 0.9rem;
+            color: #4a4648;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2.5rem 0;
+            text-align: center;
+            color: var(--color-muted);
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            .header-text h1 { font-size: 1.9rem; }
+            nav ul { justify-content: center; gap: 1rem; }
+            .contact-links { justify-content: center; }
+            section { padding: 2rem 0; }
+            .publication-item {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+            .pub-image { width: 100%; height: 100px; }
+            .item-row { grid-template-columns: 1fr; gap: 0.25rem; }
+            .service-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <div class="header-content">
+                <img src="photo.jpg" alt="Andreas Waldis" class="profile-photo" onerror="this.style.background='rgba(255,255,255,0.6)'">
+                <div class="header-text">
+                    <h1>Andreas Waldis</h1>
+                    <p class="title">PhD Candidate · NLP Researcher</p>
+                    <div class="affiliations">
+                        <a href="https://www.informatik.tu-darmstadt.de/ukp/ukp_home/index.en.jsp" target="_blank">UKP Lab</a>, Technical University of Darmstadt<br>
+                        <a href="https://www.hslu.ch/en/" target="_blank">Lucerne University of Applied Sciences and Arts</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#talks">Talks</a></li>
+                <li><a href="#organization">Organization</a></li>
+                <li><a href="#grants">Grants</a></li>
+                <li><a href="#service">Service</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="about">
+            <div class="container">
+                <h2>About</h2>
+                <div class="about-text">
+                    <p>
+                        I am a PhD candidate at the Ubiquitous Knowledge Processing (UKP) Lab at Technical University of Darmstadt, 
+                        supervised by Prof. Dr. Iryna Gurevych. My research focuses on gaining a deeper understanding 
+                        of language models to unlock their full potential as valuable societal tools.
+                    </p>
+                    <p>
+                        During my PhD, I have examined knowledge integration, out-of-distribution generalization, 
+                        linguistic competence, and the interplay between model internals and behavior for toxicity.
+                    </p>
+                </div>
+                
+                <div class="research-interests">
+                    <h3>Research Interests</h3>
+                    <ul>
+                        <li>Understanding model internals and their interplay with model behavior</li>
+                        <li>Unleashing the power of latent abilities encoded in model internals</li>
+                        <li>Tracing generalization capabilities of models for future scenarios</li>
+                        <li>Computational argumentation and stance detection</li>
+                    </ul>
+                </div>
+
+                <div class="contact-links">
+                    <a href="mailto:andreas.waldis@live.com">Email</a>
+                    <a href="https://scholar.google.com/" target="_blank">Google Scholar</a>
+                    <a href="https://aclanthology.org/people/andreas-waldis/" target="_blank">ACL Anthology</a>
+                    <a href="https://www.linkedin.com/in/andreas-waldis/" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="publications">
+            <div class="container">
+                <h2>Selected Publications</h2>
+                <ul class="publication-list">
+
+                    <li class="publication-item">
+                        <div class="pub-image">
+                            <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
+                                <rect fill="#fff9f7" width="100" height="68"/>
+                                <circle cx="22" cy="22" r="10" fill="#f8a5c2" opacity="0.6"/>
+                                <circle cx="22" cy="46" r="10" fill="#f5a962" opacity="0.6"/>
+                                <path d="M32 22 L45 34 M32 46 L45 34" stroke="#e8c4b8" stroke-width="1.5" fill="none"/>
+                                <rect x="45" y="26" width="16" height="16" rx="4" fill="url(#go1)"/>
+                                <path d="M61 34 L78 34" stroke="#e8c4b8" stroke-width="1.5" fill="none" stroke-dasharray="3,2"/>
+                                <rect x="72" y="28" width="20" height="12" rx="3" fill="#f8a5c2"/>
+                                <defs><linearGradient id="go1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f8a5c2"/><stop offset="100%" stop-color="#f5a962"/></linearGradient></defs>
+                            </svg>
+                        </div>
+                        <div class="pub-content">
+                            <div class="pub-meta">BlackboxNLP 2025</div>
+                            <div class="pub-title">
+                                <a href="https://aclanthology.org/2025.blackboxnlp-1.19/" target="_blank">A Pipeline to Assess Merging Methods via Behavior and Internals</a>
+                            </div>
+                            <div class="pub-authors">Yutaro Sigrist, <strong>Andreas Waldis</strong></div>
+                        </div>
+                    </li>
+
+                    <li class="publication-item">
+                        <div class="pub-image">
+                            <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
+                                <rect fill="#fffaf8" width="100" height="68"/>
+                                <rect x="8" y="12" width="36" height="44" rx="4" fill="#fff" stroke="#f5e6e0"/>
+                                <rect x="12" y="18" width="28" height="2" fill="#f8a5c2" opacity="0.7"/>
+                                <rect x="12" y="23" width="22" height="2" fill="#f0e8e4"/>
+                                <rect x="12" y="28" width="26" height="2" fill="#f8a5c2" opacity="0.5"/>
+                                <rect x="12" y="33" width="20" height="2" fill="#f0e8e4"/>
+                                <path d="M50 34 L62 34" stroke="#e8c4b8" stroke-width="1.5"/>
+                                <rect x="62" y="18" width="30" height="32" rx="5" fill="url(#go2)"/>
+                                <circle cx="77" cy="28" r="5" fill="rgba(255,255,255,0.4)"/>
+                                <circle cx="77" cy="42" r="5" fill="rgba(255,255,255,0.4)"/>
+                                <defs><linearGradient id="go2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f8a5c2"/><stop offset="100%" stop-color="#f5a962"/></linearGradient></defs>
+                            </svg>
+                        </div>
+                        <div class="pub-content">
+                            <div class="pub-meta">arXiv 2025</div>
+                            <div class="pub-title">
+                                <a href="https://arxiv.org/abs/2503.13390" target="_blank">Aligned Probing: Relating Toxic Behavior and Model Internals</a>
+                            </div>
+                            <div class="pub-authors"><strong>Andreas Waldis</strong>, Vagrant Gautam, Anne Lauscher, Dietrich Klakow, Iryna Gurevych</div>
+                        </div>
+                    </li>
+
+                    <li class="publication-item">
+                        <div class="pub-image">
+                            <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
+                                <rect fill="#fffbf8" width="100" height="68"/>
+                                <rect x="10" y="10" width="24" height="32" rx="3" fill="#fff" stroke="#f0e4de"/>
+                                <rect x="13" y="14" width="16" height="2" fill="#ccc"/>
+                                <rect x="13" y="18" width="18" height="2" fill="#e8e4e0"/>
+                                <rect x="13" y="22" width="14" height="2" fill="#e8e4e0"/>
+                                <line x1="8" y1="8" x2="36" y2="44" stroke="#f8a5c2" stroke-width="2"/>
+                                <rect x="50" y="16" width="40" height="36" rx="4" fill="url(#go3)"/>
+                                <rect x="55" y="24" width="12" height="20" fill="rgba(255,255,255,0.35)"/>
+                                <rect x="70" y="32" width="12" height="12" fill="rgba(255,255,255,0.28)"/>
+                                <defs><linearGradient id="go3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f8a5c2"/><stop offset="100%" stop-color="#f5a962"/></linearGradient></defs>
+                            </svg>
+                        </div>
+                        <div class="pub-content">
+                            <div class="pub-meta">SDP Workshop 2025</div>
+                            <div class="pub-title">
+                                <a href="https://aclanthology.org/2025.sdp-1.6/" target="_blank">Analyzing the Evolution of Scientific Misconduct Based on the Language of Retracted Papers</a>
+                            </div>
+                            <div class="pub-authors">Christof Bless, <strong>Andreas Waldis</strong>, Angelina Parfenova, Maria A. Rodriguez, Andreas Marfurt</div>
+                        </div>
+                    </li>
+
+                    <li class="publication-item">
+                        <div class="pub-image">
+                            <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
+                                <rect fill="#fff8f6" width="100" height="68"/>
+                                <circle cx="28" cy="34" r="18" fill="none" stroke="url(#go4)" stroke-width="2.5"/>
+                                <line x1="41" y1="46" x2="55" y2="58" stroke="url(#go4)" stroke-width="3" stroke-linecap="round"/>
+                                <rect x="60" y="12" width="30" height="8" rx="3" fill="#f8a5c2"/>
+                                <rect x="60" y="23" width="30" height="8" rx="3" fill="#f7b389"/>
+                                <rect x="60" y="34" width="30" height="8" rx="3" fill="#f5a962"/>
+                                <rect x="60" y="45" width="30" height="8" rx="3" fill="#f0c078"/>
+                                <defs><linearGradient id="go4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f8a5c2"/><stop offset="100%" stop-color="#f5a962"/></linearGradient></defs>
+                            </svg>
+                        </div>
+                        <div class="pub-content">
+                            <div class="pub-meta">TACL 2024 · Journal</div>
+                            <div class="pub-title">
+                                <a href="https://aclanthology.org/2024.tacl-1.88/" target="_blank">Holmes ⌕ A Benchmark to Assess the Linguistic Competence of Language Models</a>
+                            </div>
+                            <div class="pub-authors"><strong>Andreas Waldis</strong>, Yotam Perlitz, Leshem Choshen, Yufang Hou, Iryna Gurevych</div>
+                        </div>
+                    </li>
+
+                    <li class="publication-item">
+                        <div class="pub-image">
+                            <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
+                                <rect fill="#fffaf7" width="100" height="68"/>
+                                <ellipse cx="28" cy="34" rx="20" ry="16" fill="#f8a5c2" opacity="0.25"/>
+                                <ellipse cx="45" cy="34" rx="20" ry="16" fill="#f7b389" opacity="0.25"/>
+                                <ellipse cx="36" cy="48" rx="20" ry="12" fill="#f5a962" opacity="0.25"/>
+                                <text x="18" y="28" font-size="5" fill="#d46a8a" font-family="sans-serif">Topic</text>
+                                <text x="48" y="28" font-size="5" fill="#e8956d" font-family="sans-serif">Domain</text>
+                                <text x="32" y="58" font-size="5" fill="#d4884a" font-family="sans-serif">Lang</text>
+                                <rect x="72" y="20" width="20" height="28" rx="4" fill="url(#go5)"/>
+                                <defs><linearGradient id="go5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f8a5c2"/><stop offset="100%" stop-color="#f5a962"/></linearGradient></defs>
+                            </svg>
+                        </div>
+                        <div class="pub-content">
+                            <div class="pub-meta">ACL 2024 · Main Conference</div>
+                            <div class="pub-title">
+                                <a href="https://aclanthology.org/2024.acl-long.795/" target="_blank">How to Handle Different Types of Out-of-Distribution Scenarios in Computational Argumentation?</a>
+                            </div>
+                            <div class="pub-authors"><strong>Andreas Waldis</strong>, Yufang Hou, Iryna Gurevych</div>
+                        </div>
+                    </li>
+
+                    <li class="publication-item">
+                        <div class="pub-image">
+                            <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
+                                <rect fill="#fffaf8" width="100" height="68"/>
+                                <rect x="8" y="16" width="32" height="36" rx="4" fill="#fff" stroke="#f5e6e0"/>
+                                <text x="24" y="30" font-size="5" fill="#aaa" text-anchor="middle" font-family="sans-serif">Nutzer</text>
+                                <path d="M24 34 L24 42" stroke="#f7b389" stroke-width="1.5"/>
+                                <text x="24" y="48" font-size="4" fill="#d4884a" text-anchor="middle" font-family="sans-serif">Nutzende</text>
+                                <path d="M44 34 L54 34" stroke="#e8c4b8" stroke-width="1.5"/>
+                                <rect x="56" y="14" width="36" height="40" rx="5" fill="url(#go6)"/>
+                                <circle cx="68" cy="28" r="6" fill="rgba(255,255,255,0.4)"/>
+                                <circle cx="82" cy="28" r="6" fill="rgba(255,255,255,0.35)"/>
+                                <rect x="62" y="40" width="24" height="2" fill="rgba(255,255,255,0.4)"/>
+                                <defs><linearGradient id="go6" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f8a5c2"/><stop offset="100%" stop-color="#f5a962"/></linearGradient></defs>
+                            </svg>
+                        </div>
+                        <div class="pub-content">
+                            <div class="pub-meta">EMNLP 2024</div>
+                            <div class="pub-title">
+                                <a href="https://aclanthology.org/2024.emnlp-main.592/" target="_blank">The Lou Dataset – Exploring the Impact of Gender-Fair Language in German Text Classification</a>
+                            </div>
+                            <div class="pub-authors"><strong>Andreas Waldis</strong>, Joel Birrer, Anne Lauscher, Iryna Gurevych</div>
+                        </div>
+                    </li>
+
+                    <li class="publication-item">
+                        <div class="pub-image">
+                            <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
+                                <rect fill="#fff9f6" width="100" height="68"/>
+                                <rect x="8" y="20" width="28" height="28" rx="4" fill="#f8a5c2"/>
+                                <text x="22" y="36" font-size="5" fill="white" text-anchor="middle" font-family="sans-serif">In-Topic</text>
+                                <path d="M40 34 L55 34" stroke="#e8c4b8" stroke-width="1.5" stroke-dasharray="3,2"/>
+                                <text x="47" y="28" font-size="4" fill="#aaa" text-anchor="middle" font-family="sans-serif">gap</text>
+                                <rect x="58" y="20" width="28" height="28" rx="4" fill="#f5a962"/>
+                                <text x="72" y="33" font-size="4" fill="white" text-anchor="middle" font-family="sans-serif">Cross-</text>
+                                <text x="72" y="40" font-size="4" fill="white" text-anchor="middle" font-family="sans-serif">Topic</text>
+                            </svg>
+                        </div>
+                        <div class="pub-content">
+                            <div class="pub-meta">Findings of EACL 2024</div>
+                            <div class="pub-title">
+                                <a href="https://aclanthology.org/2024.findings-eacl.146/" target="_blank">Dive into the Chasm: Probing the Gap between In- and Cross-Topic Generalization</a>
+                            </div>
+                            <div class="pub-authors"><strong>Andreas Waldis</strong>, Yufang Hou, Iryna Gurevych</div>
+                        </div>
+                    </li>
+
+                    <li class="publication-item">
+                        <div class="pub-image">
+                            <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
+                                <rect fill="#fffaf8" width="100" height="68"/>
+                                <circle cx="20" cy="24" r="8" fill="#f8a5c2" opacity="0.6"/>
+                                <circle cx="35" cy="40" r="8" fill="#f7b389" opacity="0.6"/>
+                                <circle cx="20" cy="48" r="6" fill="#f5a962" opacity="0.6"/>
+                                <circle cx="40" cy="22" r="5" fill="#f0c078" opacity="0.6"/>
+                                <rect x="55" y="16" width="36" height="36" rx="4" fill="#fff" stroke="#f5e6e0"/>
+                                <rect x="60" y="22" width="26" height="3" fill="#f8a5c2" opacity="0.6"/>
+                                <rect x="60" y="28" width="22" height="3" fill="#f7b389" opacity="0.6"/>
+                                <rect x="60" y="34" width="24" height="3" fill="#f5a962" opacity="0.6"/>
+                                <rect x="60" y="40" width="18" height="3" fill="#f0c078" opacity="0.6"/>
+                            </svg>
+                        </div>
+                        <div class="pub-content">
+                            <div class="pub-meta">ArgMining @ ACL 2024</div>
+                            <div class="pub-title">
+                                <a href="https://aclanthology.org/2024.argmining-1.14/" target="_blank">Overview of PerspectiveArg2024: The First Shared Task on Perspective Argument Retrieval</a>
+                            </div>
+                            <div class="pub-authors">Neele Falk, <strong>Andreas Waldis</strong>, Iryna Gurevych</div>
+                        </div>
+                    </li>
+
+                    <li class="publication-item">
+                        <div class="pub-image">
+                            <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
+                                <rect fill="#fffbf8" width="100" height="68"/>
+                                <circle cx="22" cy="34" r="16" fill="#f5ebe6" stroke="#e8dcd4"/>
+                                <text x="22" y="37" font-size="5" fill="#aaa" text-anchor="middle" font-family="sans-serif">Size</text>
+                                <text x="48" y="36" font-size="8" fill="#e8c4b8" font-family="sans-serif">vs</text>
+                                <circle cx="72" cy="24" r="7" fill="#f8a5c2"/>
+                                <circle cx="82" cy="38" r="6" fill="#f7b389"/>
+                                <circle cx="68" cy="46" r="5" fill="#f5a962"/>
+                                <circle cx="86" cy="52" r="4" fill="#f0c078"/>
+                                <text x="76" y="64" font-size="4" fill="#aaa" text-anchor="middle" font-family="sans-serif">Diversity</text>
+                            </svg>
+                        </div>
+                        <div class="pub-content">
+                            <div class="pub-meta">EMNLP 2024</div>
+                            <div class="pub-title">
+                                <a href="https://aclanthology.org/2024.emnlp-main.608/" target="_blank">Diversity Over Size: On the Effect of Sample and Topic Sizes for Argument Mining</a>
+                            </div>
+                            <div class="pub-authors">Benjamin Schiller, Johannes Daxenberger, <strong>Andreas Waldis</strong>, Iryna Gurevych</div>
+                        </div>
+                    </li>
+
+                    <li class="publication-item">
+                        <div class="pub-image">
+                            <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
+                                <rect fill="#fffaf7" width="100" height="68"/>
+                                <rect x="8" y="12" width="40" height="44" rx="6" fill="#fff" stroke="#f5e6e0" stroke-width="1.5"/>
+                                <circle cx="28" cy="28" r="10" fill="#f8f0ec"/>
+                                <rect x="12" y="42" width="32" height="2" fill="#f8f0ec"/>
+                                <rect x="12" y="48" width="24" height="2" fill="#f8f0ec"/>
+                                <rect x="58" y="22" width="32" height="24" rx="5" fill="url(#go8)"/>
+                                <path d="M68 34 L74 40 L82 30" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="48" cy="52" r="7" fill="#f8a5c2"/>
+                                <text x="48" y="55" font-size="8" fill="white" text-anchor="middle" font-family="sans-serif">!</text>
+                                <defs><linearGradient id="go8" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f8a5c2"/><stop offset="100%" stop-color="#f5a962"/></linearGradient></defs>
+                            </svg>
+                        </div>
+                        <div class="pub-content">
+                            <div class="pub-meta">EACL 2024 · Demo</div>
+                            <div class="pub-title">
+                                <a href="https://aclanthology.org/2024.eacl-demo.9/" target="_blank">ScamSpot: Fighting Financial Fraud in Instagram Comments</a>
+                            </div>
+                            <div class="pub-authors">Stefan Erben, <strong>Andreas Waldis</strong></div>
+                        </div>
+                    </li>
+
+                    <li class="publication-item">
+                        <div class="pub-image">
+                            <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
+                                <rect fill="#fffaf8" width="100" height="68"/>
+                                <rect x="8" y="16" width="30" height="36" rx="4" fill="#fff" stroke="#f5e6e0"/>
+                                <circle cx="23" cy="28" r="6" fill="#f8a5c2" opacity="0.5"/>
+                                <rect x="12" y="40" width="22" height="2" fill="#f8f0ec"/>
+                                <path d="M42 34 L52 34" stroke="#e8c4b8" stroke-width="1.5"/>
+                                <rect x="48" y="28" width="10" height="12" fill="#f7b389" opacity="0.4" rx="2"/>
+                                <text x="53" y="36" font-size="4" fill="#d4884a" text-anchor="middle" font-family="sans-serif">KB</text>
+                                <rect x="62" y="16" width="30" height="36" rx="4" fill="url(#go9)"/>
+                                <text x="77" y="30" font-size="5" fill="white" text-anchor="middle" font-family="sans-serif">Stance</text>
+                                <text x="72" y="42" font-size="7" fill="rgba(255,255,255,0.8)" font-family="sans-serif">+</text>
+                                <text x="82" y="42" font-size="7" fill="rgba(255,255,255,0.6)" font-family="sans-serif">−</text>
+                                <defs><linearGradient id="go9" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f8a5c2"/><stop offset="100%" stop-color="#f5a962"/></linearGradient></defs>
+                            </svg>
+                        </div>
+                        <div class="pub-content">
+                            <div class="pub-meta">*SEM @ ACL 2023</div>
+                            <div class="pub-title">
+                                <a href="https://aclanthology.org/2023.starsem-1.43/" target="_blank">Robust Integration of Contextual Information for Cross-Target Stance Detection</a>
+                            </div>
+                            <div class="pub-authors">Tilman Beck, <strong>Andreas Waldis</strong>, Iryna Gurevych</div>
+                        </div>
+                    </li>
+
+                    <li class="publication-item">
+                        <div class="pub-image">
+                            <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
+                                <rect fill="#fffaf8" width="100" height="68"/>
+                                <rect x="8" y="16" width="14" height="10" rx="3" fill="#f8a5c2"/>
+                                <rect x="8" y="30" width="14" height="10" rx="3" fill="#f8a5c2"/>
+                                <rect x="8" y="44" width="14" height="10" rx="3" fill="#f8a5c2"/>
+                                <rect x="28" y="16" width="14" height="10" rx="3" fill="#f5a962"/>
+                                <rect x="28" y="30" width="14" height="10" rx="3" fill="#f5a962"/>
+                                <rect x="28" y="44" width="14" height="10" rx="3" fill="#f5a962"/>
+                                <path d="M22 21 L28 21 M22 35 L28 35 M22 49 L28 21 M22 21 L28 35" stroke="#e8d4c8" stroke-width="0.8"/>
+                                <path d="M48 34 L58 34" stroke="#e8c4b8" stroke-width="1.5"/>
+                                <rect x="62" y="22" width="28" height="24" rx="4" fill="url(#go10)"/>
+                                <text x="76" y="36" font-size="5" fill="white" text-anchor="middle" font-family="sans-serif">Batch</text>
+                                <defs><linearGradient id="go10" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f8a5c2"/><stop offset="100%" stop-color="#f5a962"/></linearGradient></defs>
+                            </svg>
+                        </div>
+                        <div class="pub-content">
+                            <div class="pub-meta">Findings of ACL 2022</div>
+                            <div class="pub-title">
+                                <a href="https://aclanthology.org/2022.findings-acl.239/" target="_blank">Composing Structure-Aware Batches for Pairwise Sentence Classification</a>
+                            </div>
+                            <div class="pub-authors"><strong>Andreas Waldis</strong>, Tilman Beck, Iryna Gurevych</div>
+                        </div>
+                    </li>
+
+                </ul>
+                <p style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--color-muted);">
+                    Full list available on <a href="https://aclanthology.org/people/andreas-waldis/" target="_blank">ACL Anthology</a>.
+                </p>
+            </div>
+        </section>
+
+        <section id="talks">
+            <div class="container">
+                <h2>Talks</h2>
+                <ul class="item-list">
+                    <li class="item-row">
+                        <div class="item-year">2025</div>
+                        <div class="item-content">
+                            <div class="item-title">Why and How We Should Study Internal Representations of LMs</div>
+                            <div class="item-meta">Data Science Group, Hamburg University</div>
+                        </div>
+                    </li>
+                    <li class="item-row">
+                        <div class="item-year">2024</div>
+                        <div class="item-content">
+                            <div class="item-title">Linguistic Competence of Language Models and the Role of their Internal Representations</div>
+                            <div class="item-meta">Department of Computational Linguistics, University of Zurich</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="organization">
+            <div class="container">
+                <h2>Organization</h2>
+                <ul class="item-list">
+                    <li class="item-row">
+                        <div class="item-year">2025</div>
+                        <div class="item-content">
+                            <div class="item-title">KnitTogether25'</div>
+                            <div class="item-meta">The First European CL Research Summit for Junior Researchers · Topic: Bias in NLP and its societal impacts</div>
+                        </div>
+                    </li>
+                    <li class="item-row">
+                        <div class="item-year">2024</div>
+                        <div class="item-content">
+                            <div class="item-title">PerspectiveArg2024</div>
+                            <div class="item-meta">First shared task on perspective argument retrieval · ArgMining Workshop @ ACL 2024</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="grants">
+            <div class="container">
+                <h2>Grants & Awards</h2>
+                <ul class="item-list">
+                    <li class="item-row">
+                        <div class="item-year">2020</div>
+                        <div class="item-content">
+                            <div class="item-title">ARL: Argument Representation Learning</div>
+                            <div class="item-meta">Hasler Foundation · Grant Nr. 21024</div>
+                        </div>
+                    </li>
+                    <li class="item-row">
+                        <div class="item-year">2017</div>
+                        <div class="item-content">
+                            <div class="item-title">Hirschmann Scholarship Grant</div>
+                            <div class="item-meta">Awarded for above-average sense of purpose and demonstration of social engagement</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="service">
+            <div class="container">
+                <h2>Academic Service</h2>
+                <div class="service-grid">
+                    <div class="service-item">
+                        <h3>Area Chairing</h3>
+                        <p>ACL ARR (2025)</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>Reviewing</h3>
+                        <p>ACL ARR, NeurIPS, ICLR, ICML (2022–2025)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Andreas Waldis · Lucerne, Switzerland</p>
+        </div>
+    </footer>
+</body>
+</html>

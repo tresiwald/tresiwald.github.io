@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andreas Waldis – NLP Researcher</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'&gt;&lt;defs&gt;&lt;linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'&gt;&lt;stop offset='0%25' stop-color='%23f8a5c2'/&gt;&lt;stop offset='100%25' stop-color='%23f5a962'/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;circle cx='16' cy='16' r='14' fill='url(%23g)'/&gt;&lt;/svg&gt;">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
     <style>
         :root {
             --color-ink: #2d2a2e;
@@ -156,6 +157,18 @@
         .about-text p { margin-bottom: 1rem; color: #4a4648; }
         .about-text p:last-child { margin-bottom: 0; }
 
+        /* Inline "research interest" links inside About */
+        .about-text a.interest {
+            /*color: inherit;
+            text-decoration: underline;
+            text-decoration-color: rgba(212,106,138,0.6);
+            text-underline-offset: 2px;
+            text-decoration-thickness: 1px;
+            transition: opacity 0.2s ease;*/
+            cursor:pointer;
+        }
+        .about-text a.interest:hover { opacity: 0.75; }
+
         .research-interests {
             margin-top: 1.5rem;
             padding: 1.25rem 1.5rem;
@@ -207,6 +220,36 @@
         /* Publications */
         .publication-list { list-style: none; }
 
+        .pub-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+        .filter-chip {
+            font-size: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            border: 1px solid rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.6);
+            color: var(--color-muted);
+            cursor: pointer;
+        }
+        .filter-chip.active {
+            color: var(--color-ink);
+            border-color: rgba(212,106,138,0.6);
+            background: linear-gradient(
+                135deg,
+                rgba(248,165,194,0.35) 0%,
+                rgba(245,169,98,0.35) 100%
+            );
+            box-shadow: 0 2px 8px rgba(212,106,138,0.25);
+            font-weight: 600;
+        }
+        .filter-chip.clear {
+            border-style: dashed;
+        }
+
         .publication-item {
             padding: 1.25rem 0;
             border-bottom: 1px solid var(--color-border);
@@ -217,6 +260,16 @@
         }
         .publication-item:first-child { padding-top: 0; }
         .publication-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .publication-item.highlight {
+            background: linear-gradient(
+                135deg,
+                rgba(248,165,194,0.25) 0%,
+                rgba(245,169,98,0.25) 100%
+            );
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(212,106,138,0.25);
+            padding: 1.25rem;
+        }
 
         .pub-image {
             width: 100px;
@@ -349,13 +402,12 @@
     <header class="hero">
         <div class="container">
             <div class="header-content">
-                <img src="photo.jpg" alt="Andreas Waldis" class="profile-photo" onerror="this.style.background='rgba(255,255,255,0.6)'">
+                <img src="me.png" alt="Andreas Waldis" class="profile-photo" onerror="this.style.background='rgba(255,255,255,0.6)'">
                 <div class="header-text">
                     <h1>Andreas Waldis</h1>
-                    <p class="title">PhD Candidate · NLP Researcher</p>
+                    <p class="title">PostDoc · Junior Group Lead · NLP Researcher</p>
                     <div class="affiliations">
-                        <a href="https://www.informatik.tu-darmstadt.de/ukp/ukp_home/index.en.jsp" target="_blank">UKP Lab</a>, Technical University of Darmstadt<br>
-                        <a href="https://www.hslu.ch/en/" target="_blank">Lucerne University of Applied Sciences and Arts</a>
+                        <a href="https://cogsciprag.github.io/home/" target="_blank">CSP Lab</a>, University of Tübingen<br>
                     </div>
                 </div>
             </div>
@@ -380,31 +432,25 @@
             <div class="container">
                 <h2>About</h2>
                 <div class="about-text">
-                    <p>
-                        I am a PhD candidate at the Ubiquitous Knowledge Processing (UKP) Lab at Technical University of Darmstadt, 
-                        supervised by Prof. Dr. Iryna Gurevych. My research focuses on gaining a deeper understanding 
-                        of language models to unlock their full potential as valuable societal tools.
-                    </p>
-                    <p>
-                        During my PhD, I have examined knowledge integration, out-of-distribution generalization, 
-                        linguistic competence, and the interplay between model internals and behavior for toxicity.
-                    </p>
+<p>
+    I’m a Postdoc and Junior Group Lead at the University of Tübingen, where I work with <a href="https://michael-franke.github.io/heimseite/" target="_blank">Michael Franke</a>. in the <a href="https://cogsciprag.github.io/home/" target="_blank">Cognitive Science & Pragmatics group (CSP Lab) </a>. 
+    Before moving to Tübingen, I completed my PhD at the <a href="https://www.informatik.tu-darmstadt.de/ukp/ukp_home" target="_blank">UKP Lab (TU Darmstadt)</a>, supervised by Prof. Dr. Iryna Gurevych and worked as a Senior Research Associate at the Lucerne University of Applied Sciences and Arts.
+</p>
+<p>
+    My research in natural language processing focuses on <a class="interest" data-filter="interpretability">interpretability methods</a>, their robustness, and the <a class="interest" data-filter="generalization">generalizability</a> of language models.
+    I am particularly interested on how these models <a class="interest" data-filter="language-understanding">understand language</a> and their alignment with <a class="interest" data-filter="societal">societal norms and values</a> for a more reliable model behavior. 
+    I enjoy designing extensive experiments that connect <a class="interest" data-filter="interpretability">multiple perspectives of language models</a>—including model behavior, causal mechanisms, and internal representations—to connect empirical findings with linguistic and cognitive theories.
+</p>
+<p>
+    During my PhD, I worked on the reliability of language models within <a class="interest" data-filter="comparg">computational argumentation</a>, exploring the integration of <a href="#pub-inject">external knowledge</a>, <a class="interest" data-filter="generalization">out-of-distribution generalization</a>, <a class="interest" data-filter="language-understanding">linguistic competence</a>, and <a class="interest" data-filter="societal">societal and safety aspects</a>.
+</p>
                 </div>
-                
-                <div class="research-interests">
-                    <h3>Research Interests</h3>
-                    <ul>
-                        <li>Understanding model internals and their interplay with model behavior</li>
-                        <li>Unleashing the power of latent abilities encoded in model internals</li>
-                        <li>Tracing generalization capabilities of models for future scenarios</li>
-                        <li>Computational argumentation and stance detection</li>
-                    </ul>
-                </div>
-
                 <div class="contact-links">
                     <a href="mailto:andreas.waldis@live.com">Email</a>
-                    <a href="https://scholar.google.com/" target="_blank">Google Scholar</a>
+                    <a href="https://scholar.google.com/citations?user=u-iQFJIAAAAJ&hl=en" target="_blank">Google Scholar</a>
                     <a href="https://aclanthology.org/people/andreas-waldis/" target="_blank">ACL Anthology</a>
+                    <a href="https://bsky.app/profile/tresiwald.bsky.social" target="_blank">Bluesky</a>
+                    <a href="https://x.com/AndreasWaldis" target="_blank">X</a>
                     <a href="https://www.linkedin.com/in/andreas-waldis/" target="_blank">LinkedIn</a>
                 </div>
             </div>
@@ -413,9 +459,17 @@
         <section id="publications">
             <div class="container">
                 <h2>Selected Publications</h2>
+                <div class="pub-filters">
+                    <button class="filter-chip" data-filter="language-understanding">Language Understanding</button>
+                    <button class="filter-chip" data-filter="generalization">Generalization</button>
+                    <button class="filter-chip" data-filter="societal">Societal Aspects</button>
+                    <button class="filter-chip" data-filter="interpretability">Interpretability Methods</button>
+                    <button class="filter-chip" data-filter="comparg">Computational Argumentation</button>
+                    <button class="filter-chip clear" data-filter="all">Show all</button>
+                </div>
                 <ul class="publication-list">
 
-                    <li class="publication-item">
+                    <li class="publication-item" id="pub-model-merging" data-tags="interpretability">
                         <div class="pub-image">
                             <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
                                 <rect fill="#fff9f7" width="100" height="68"/>
@@ -429,7 +483,7 @@
                             </svg>
                         </div>
                         <div class="pub-content">
-                            <div class="pub-meta">BlackboxNLP 2025</div>
+                            <div class="pub-meta">BlackboxNLP @ EMNLP 2025 · Workshop</div>
                             <div class="pub-title">
                                 <a href="https://aclanthology.org/2025.blackboxnlp-1.19/" target="_blank">A Pipeline to Assess Merging Methods via Behavior and Internals</a>
                             </div>
@@ -437,24 +491,53 @@
                         </div>
                     </li>
 
-                    <li class="publication-item">
+                    <li class="publication-item" id="pub-aligned-probing" data-tags="interpretability,societal">
                         <div class="pub-image">
                             <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
-                                <rect fill="#fffaf8" width="100" height="68"/>
-                                <rect x="8" y="12" width="36" height="44" rx="4" fill="#fff" stroke="#f5e6e0"/>
-                                <rect x="12" y="18" width="28" height="2" fill="#f8a5c2" opacity="0.7"/>
-                                <rect x="12" y="23" width="22" height="2" fill="#f0e8e4"/>
-                                <rect x="12" y="28" width="26" height="2" fill="#f8a5c2" opacity="0.5"/>
-                                <rect x="12" y="33" width="20" height="2" fill="#f0e8e4"/>
-                                <path d="M50 34 L62 34" stroke="#e8c4b8" stroke-width="1.5"/>
-                                <rect x="62" y="18" width="30" height="32" rx="5" fill="url(#go2)"/>
-                                <circle cx="77" cy="28" r="5" fill="rgba(255,255,255,0.4)"/>
-                                <circle cx="77" cy="42" r="5" fill="rgba(255,255,255,0.4)"/>
-                                <defs><linearGradient id="go2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f8a5c2"/><stop offset="100%" stop-color="#f5a962"/></linearGradient></defs>
+                                <rect fill="#fffaf8" width="100" height="68"></rect>
+                                <!-- Neural network layers (model internals) -->
+                                <rect x="6" y="8" width="38" height="52" rx="6" fill="#faf6f4" stroke="#f0e8e4" stroke-width="1"></rect>
+                                <!-- Layer 1 neurons -->
+                                <circle cx="15" cy="18" r="4" fill="#e8e4e0"></circle>
+                                <circle cx="25" cy="18" r="4" fill="#e8e4e0"></circle>
+                                <circle cx="35" cy="18" r="4" fill="#e8e4e0"></circle>
+                                <!-- Layer 2 neurons - some toxic activation -->
+                                <circle cx="15" cy="34" r="4" fill="#e57373"></circle>
+                                <circle cx="25" cy="34" r="4" fill="#e8e4e0"></circle>
+                                <circle cx="35" cy="34" r="4" fill="#e57373" opacity="0.5"></circle>
+                                <!-- Layer 3 neurons - toxic pattern -->
+                                <circle cx="15" cy="50" r="4" fill="#e57373"></circle>
+                                <circle cx="25" cy="50" r="4" fill="#e57373" opacity="0.7"></circle>
+                                <circle cx="35" cy="50" r="4" fill="#e57373" opacity="0.4"></circle>
+                                <!-- Connections showing toxic activation flow -->
+                                <path d="M15 22 L15 30 M15 38 L15 46" stroke="#e57373" stroke-width="1.5" opacity="0.6"></path>
+                                <path d="M17 36 L23 48" stroke="#e57373" stroke-width="1" opacity="0.4"></path>
+                                <!-- Toxic warning badge on internals -->
+                                <circle cx="40" cy="12" r="6" fill="#e57373"></circle>
+                                <text x="40" y="15" font-size="8" fill="white" text-anchor="middle" font-weight="bold" font-family="sans-serif">!</text>
+                                <!-- Probe arrow -->
+                                <path d="M46 34 L56 34" stroke="url(#go2)" stroke-width="2"></path>
+                                <polygon points="56,34 52,31 52,37" fill="url(#go2)"></polygon>
+                                <!-- Behavior box with toxic output -->
+                                <g transform="translate(58, 10)">
+                                    <rect width="34" height="22" rx="4" fill="url(#go2)"></rect>
+                                    <text x="17" y="10" font-size="4.5" fill="white" text-anchor="middle" font-family="sans-serif">Behavior</text>
+                                    <rect x="4" y="13" width="26" height="6" rx="2" fill="rgba(255,255,255,0.3)"></rect>
+                                    <text x="17" y="17.5" font-size="4" fill="white" text-anchor="middle" font-family="sans-serif">toxic output</text>
+                                </g>
+                                <!-- Alignment arrow -->
+                                <path d="M75 32 L75 36" stroke="#5cb85c" stroke-width="2" stroke-linecap="round"></path>
+                                <polygon points="75,38 72,35 78,35" fill="#5cb85c"></polygon>
+                                <!-- Internals box -->
+                                <g transform="translate(58, 40)">
+                                    <rect width="34" height="20" rx="4" fill="url(#go2)" opacity="0.75"></rect>
+                                    <text x="17" y="12.5" font-size="4.5" fill="white" text-anchor="middle" font-family="sans-serif">Internals</text>
+                                </g>
+                                <defs><linearGradient id="go2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f8a5c2"></stop><stop offset="100%" stop-color="#f5a962"></stop></linearGradient></defs>
                             </svg>
                         </div>
                         <div class="pub-content">
-                            <div class="pub-meta">arXiv 2025</div>
+                            <div class="pub-meta">TACL 2025 · Journal (to be published)</div>
                             <div class="pub-title">
                                 <a href="https://arxiv.org/abs/2503.13390" target="_blank">Aligned Probing: Relating Toxic Behavior and Model Internals</a>
                             </div>
@@ -462,7 +545,7 @@
                         </div>
                     </li>
 
-                    <li class="publication-item">
+                    <li class="publication-item" id="pub-retracted" data-tags="societal">
                         <div class="pub-image">
                             <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
                                 <rect fill="#fffbf8" width="100" height="68"/>
@@ -478,7 +561,7 @@
                             </svg>
                         </div>
                         <div class="pub-content">
-                            <div class="pub-meta">SDP Workshop 2025</div>
+                            <div class="pub-meta">SDP Workshop @ ACL 2025 · Workshop</div>
                             <div class="pub-title">
                                 <a href="https://aclanthology.org/2025.sdp-1.6/" target="_blank">Analyzing the Evolution of Scientific Misconduct Based on the Language of Retracted Papers</a>
                             </div>
@@ -486,16 +569,28 @@
                         </div>
                     </li>
 
-                    <li class="publication-item">
+                    <li class="publication-item" id="pub-holmes" data-tags="language-understanding">
                         <div class="pub-image">
                             <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
                                 <rect fill="#fff8f6" width="100" height="68"/>
-                                <circle cx="28" cy="34" r="18" fill="none" stroke="url(#go4)" stroke-width="2.5"/>
-                                <line x1="41" y1="46" x2="55" y2="58" stroke="url(#go4)" stroke-width="3" stroke-linecap="round"/>
-                                <rect x="60" y="12" width="30" height="8" rx="3" fill="#f8a5c2"/>
-                                <rect x="60" y="23" width="30" height="8" rx="3" fill="#f7b389"/>
-                                <rect x="60" y="34" width="30" height="8" rx="3" fill="#f5a962"/>
-                                <rect x="60" y="45" width="30" height="8" rx="3" fill="#f0c078"/>
+                                <!-- Magnifying glass (Holmes reference) -->
+                                <circle cx="30" cy="28" r="14" fill="none" stroke="url(#go4)" stroke-width="3"/>
+                                <line x1="40" y1="38" x2="52" y2="50" stroke="url(#go4)" stroke-width="4" stroke-linecap="round"/>
+                                <!-- Text being examined -->
+                                <rect x="22" y="22" width="16" height="2" fill="#e8d8d0" rx="1"/>
+                                <rect x="20" y="26" width="20" height="2" fill="#e8d8d0" rx="1"/>
+                                <rect x="24" y="30" width="12" height="2" fill="#e8d8d0" rx="1"/>
+                                <!-- Competence categories -->
+                                <rect x="60" y="8" width="32" height="9" rx="3" fill="#f8a5c2"/>
+                                <text x="76" y="14.5" font-size="4" fill="white" text-anchor="middle" font-family="sans-serif">Syntax</text>
+                                <rect x="60" y="20" width="32" height="9" rx="3" fill="#f7b389"/>
+                                <text x="76" y="26.5" font-size="4" fill="white" text-anchor="middle" font-family="sans-serif">Semantics</text>
+                                <rect x="60" y="32" width="32" height="9" rx="3" fill="#f5a962"/>
+                                <text x="76" y="38.5" font-size="4" fill="white" text-anchor="middle" font-family="sans-serif">Morphology</text>
+                                <rect x="60" y="44" width="32" height="9" rx="3" fill="#f0c078"/>
+                                <text x="76" y="50.5" font-size="4" fill="white" text-anchor="middle" font-family="sans-serif">Pragmatics</text>
+                                <rect x="60" y="56" width="32" height="9" rx="3" fill="#e8b886"/>
+                                <text x="76" y="62.5" font-size="4" fill="white" text-anchor="middle" font-family="sans-serif">Discourse</text>
                                 <defs><linearGradient id="go4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f8a5c2"/><stop offset="100%" stop-color="#f5a962"/></linearGradient></defs>
                             </svg>
                         </div>
@@ -508,17 +603,31 @@
                         </div>
                     </li>
 
-                    <li class="publication-item">
+                    <li class="publication-item" id="pub-ood" data-tags="generalization">
                         <div class="pub-image">
                             <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
                                 <rect fill="#fffaf7" width="100" height="68"/>
-                                <ellipse cx="28" cy="34" rx="20" ry="16" fill="#f8a5c2" opacity="0.25"/>
-                                <ellipse cx="45" cy="34" rx="20" ry="16" fill="#f7b389" opacity="0.25"/>
-                                <ellipse cx="36" cy="48" rx="20" ry="12" fill="#f5a962" opacity="0.25"/>
-                                <text x="18" y="28" font-size="5" fill="#d46a8a" font-family="sans-serif">Topic</text>
-                                <text x="48" y="28" font-size="5" fill="#e8956d" font-family="sans-serif">Domain</text>
-                                <text x="32" y="58" font-size="5" fill="#d4884a" font-family="sans-serif">Lang</text>
-                                <rect x="72" y="20" width="20" height="28" rx="4" fill="url(#go5)"/>
+                                <!-- Training distribution circle -->
+                                <ellipse cx="32" cy="34" rx="22" ry="18" fill="#f8a5c2" opacity="0.15" stroke="#f8a5c2" stroke-width="1" stroke-dasharray="4,2"/>
+                                <!-- In-distribution points -->
+                                <circle cx="26" cy="30" r="3" fill="#f8a5c2" opacity="0.7"/>
+                                <circle cx="36" cy="28" r="3" fill="#f8a5c2" opacity="0.7"/>
+                                <circle cx="30" cy="38" r="3" fill="#f8a5c2" opacity="0.7"/>
+                                <circle cx="40" cy="36" r="3" fill="#f8a5c2" opacity="0.7"/>
+                                <!-- OOD points outside -->
+                                <circle cx="12" cy="20" r="3" fill="#f5a962"/>
+                                <circle cx="8" cy="44" r="3" fill="#f5a962"/>
+                                <circle cx="52" cy="14" r="3" fill="#f7b389"/>
+                                <circle cx="54" cy="52" r="3" fill="#f7b389"/>
+                                <!-- Labels -->
+                                <text x="32" y="60" font-size="4" fill="#d46a8a" text-anchor="middle" font-family="sans-serif">Training</text>
+                                <!-- Arrow to output -->
+                                <path d="M56 34 L66 34" stroke="#e8c4b8" stroke-width="1.5"/>
+                                <!-- Output panel -->
+                                <rect x="68" y="12" width="26" height="44" rx="4" fill="url(#go5)"/>
+                                <text x="81" y="24" font-size="4" fill="white" text-anchor="middle" font-family="sans-serif">Topic</text>
+                                <text x="81" y="34" font-size="4" fill="white" text-anchor="middle" font-family="sans-serif">Domain</text>
+                                <text x="81" y="44" font-size="4" fill="white" text-anchor="middle" font-family="sans-serif">Language</text>
                                 <defs><linearGradient id="go5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f8a5c2"/><stop offset="100%" stop-color="#f5a962"/></linearGradient></defs>
                             </svg>
                         </div>
@@ -531,32 +640,40 @@
                         </div>
                     </li>
 
-                    <li class="publication-item">
+                    <li class="publication-item" id="pub-lou" data-tags="societal">
                         <div class="pub-image">
                             <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
                                 <rect fill="#fffaf8" width="100" height="68"/>
-                                <rect x="8" y="16" width="32" height="36" rx="4" fill="#fff" stroke="#f5e6e0"/>
-                                <text x="24" y="30" font-size="5" fill="#aaa" text-anchor="middle" font-family="sans-serif">Nutzer</text>
-                                <path d="M24 34 L24 42" stroke="#f7b389" stroke-width="1.5"/>
-                                <text x="24" y="48" font-size="4" fill="#d4884a" text-anchor="middle" font-family="sans-serif">Nutzende</text>
-                                <path d="M44 34 L54 34" stroke="#e8c4b8" stroke-width="1.5"/>
-                                <rect x="56" y="14" width="36" height="40" rx="5" fill="url(#go6)"/>
-                                <circle cx="68" cy="28" r="6" fill="rgba(255,255,255,0.4)"/>
-                                <circle cx="82" cy="28" r="6" fill="rgba(255,255,255,0.35)"/>
-                                <rect x="62" y="40" width="24" height="2" fill="rgba(255,255,255,0.4)"/>
+                                <!-- Original text box -->
+                                <rect x="6" y="14" width="30" height="40" rx="4" fill="#fff" stroke="#f5e6e0"/>
+                                <text x="21" y="26" font-size="5" fill="#999" text-anchor="middle" font-family="sans-serif">der Leser</text>
+                                <text x="21" y="34" font-size="5" fill="#999" text-anchor="middle" font-family="sans-serif">der Nutzer</text>
+                                <text x="21" y="42" font-size="5" fill="#999" text-anchor="middle" font-family="sans-serif">Student</text>
+                                <!-- Transformation arrow -->
+                                <path d="M38 34 L48 34" stroke="#e8c4b8" stroke-width="1.5"/>
+                                <!-- Gender symbols -->
+                                <circle cx="43" cy="26" r="3" fill="#f8a5c2" opacity="0.6"/>
+                                <circle cx="43" cy="42" r="3" fill="#f5a962" opacity="0.6"/>
+                                <!-- Transformed text box -->
+                                <rect x="50" y="14" width="44" height="40" rx="5" fill="url(#go6)"/>
+                                <text x="72" y="24" font-size="4.5" fill="white" text-anchor="middle" font-family="sans-serif">die Lesenden</text>
+                                <text x="72" y="33" font-size="4.5" fill="white" text-anchor="middle" font-family="sans-serif">de Nutzere</text>
+                                <text x="72" y="42" font-size="4.5" fill="white" text-anchor="middle" font-family="sans-serif">Student:in</text>
+                                <!-- Checkmark -->
+                                <path d="M82 48 L86 52 L94 44" stroke="rgba(255,255,255,0.7)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
                                 <defs><linearGradient id="go6" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f8a5c2"/><stop offset="100%" stop-color="#f5a962"/></linearGradient></defs>
                             </svg>
                         </div>
                         <div class="pub-content">
-                            <div class="pub-meta">EMNLP 2024</div>
+                            <div class="pub-meta">EMNLP 2024 · Main Conference</div>
                             <div class="pub-title">
-                                <a href="https://aclanthology.org/2024.emnlp-main.592/" target="_blank">The Lou Dataset – Exploring the Impact of Gender-Fair Language in German Text Classification</a>
+                                <a href="https://aclanthology.org/2024.emnlp-main.592/" target="_blank">The Lou Dataset · Exploring the Impact of Gender-Fair Language in German Text Classification</a>
                             </div>
                             <div class="pub-authors"><strong>Andreas Waldis</strong>, Joel Birrer, Anne Lauscher, Iryna Gurevych</div>
                         </div>
                     </li>
 
-                    <li class="publication-item">
+                    <li class="publication-item" id="pub-chasm"  data-tags="generalization,comparg,interpretability">
                         <div class="pub-image">
                             <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
                                 <rect fill="#fff9f6" width="100" height="68"/>
@@ -570,7 +687,7 @@
                             </svg>
                         </div>
                         <div class="pub-content">
-                            <div class="pub-meta">Findings of EACL 2024</div>
+                            <div class="pub-meta">EACL 2024 · Findings</div>
                             <div class="pub-title">
                                 <a href="https://aclanthology.org/2024.findings-eacl.146/" target="_blank">Dive into the Chasm: Probing the Gap between In- and Cross-Topic Generalization</a>
                             </div>
@@ -578,7 +695,7 @@
                         </div>
                     </li>
 
-                    <li class="publication-item">
+                    <li class="publication-item" id="pub-perspect-arg" data-tags="generalization,comparg,societal">
                         <div class="pub-image">
                             <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
                                 <rect fill="#fffaf8" width="100" height="68"/>
@@ -594,7 +711,7 @@
                             </svg>
                         </div>
                         <div class="pub-content">
-                            <div class="pub-meta">ArgMining @ ACL 2024</div>
+                            <div class="pub-meta">ArgMining @ ACL 2024 · Workshop</div>
                             <div class="pub-title">
                                 <a href="https://aclanthology.org/2024.argmining-1.14/" target="_blank">Overview of PerspectiveArg2024: The First Shared Task on Perspective Argument Retrieval</a>
                             </div>
@@ -602,7 +719,7 @@
                         </div>
                     </li>
 
-                    <li class="publication-item">
+                    <li class="publication-item" id="pub-diversity" data-tags="generalization,comparg">
                         <div class="pub-image">
                             <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
                                 <rect fill="#fffbf8" width="100" height="68"/>
@@ -617,7 +734,7 @@
                             </svg>
                         </div>
                         <div class="pub-content">
-                            <div class="pub-meta">EMNLP 2024</div>
+                            <div class="pub-meta">EMNLP 2024 · Main Conference</div>
                             <div class="pub-title">
                                 <a href="https://aclanthology.org/2024.emnlp-main.608/" target="_blank">Diversity Over Size: On the Effect of Sample and Topic Sizes for Argument Mining</a>
                             </div>
@@ -625,7 +742,7 @@
                         </div>
                     </li>
 
-                    <li class="publication-item">
+                    <li class="publication-item" id="pub-scam" data-tags="generalization,societal">
                         <div class="pub-image">
                             <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
                                 <rect fill="#fffaf7" width="100" height="68"/>
@@ -641,7 +758,7 @@
                             </svg>
                         </div>
                         <div class="pub-content">
-                            <div class="pub-meta">EACL 2024 · Demo</div>
+                            <div class="pub-meta">EACL 2024 · System Demonstration</div>
                             <div class="pub-title">
                                 <a href="https://aclanthology.org/2024.eacl-demo.9/" target="_blank">ScamSpot: Fighting Financial Fraud in Instagram Comments</a>
                             </div>
@@ -649,25 +766,41 @@
                         </div>
                     </li>
 
-                    <li class="publication-item">
+                    <li class="publication-item" id="pub-inject" data-tags="generalization,comparg">
                         <div class="pub-image">
                             <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
                                 <rect fill="#fffaf8" width="100" height="68"/>
-                                <rect x="8" y="16" width="30" height="36" rx="4" fill="#fff" stroke="#f5e6e0"/>
-                                <circle cx="23" cy="28" r="6" fill="#f8a5c2" opacity="0.5"/>
-                                <rect x="12" y="40" width="22" height="2" fill="#f8f0ec"/>
-                                <path d="M42 34 L52 34" stroke="#e8c4b8" stroke-width="1.5"/>
-                                <rect x="48" y="28" width="10" height="12" fill="#f7b389" opacity="0.4" rx="2"/>
-                                <text x="53" y="36" font-size="4" fill="#d4884a" text-anchor="middle" font-family="sans-serif">KB</text>
-                                <rect x="62" y="16" width="30" height="36" rx="4" fill="url(#go9)"/>
-                                <text x="77" y="30" font-size="5" fill="white" text-anchor="middle" font-family="sans-serif">Stance</text>
-                                <text x="72" y="42" font-size="7" fill="rgba(255,255,255,0.8)" font-family="sans-serif">+</text>
-                                <text x="82" y="42" font-size="7" fill="rgba(255,255,255,0.6)" font-family="sans-serif">−</text>
+                                <!-- Document/text input -->
+                                <rect x="6" y="14" width="26" height="40" rx="4" fill="#fff" stroke="#f5e6e0"/>
+                                <rect x="10" y="18" width="18" height="2.5" fill="#f0e8e4" rx="1"/>
+                                <rect x="10" y="23" width="14" height="2.5" fill="#f0e8e4" rx="1"/>
+                                <rect x="10" y="28" width="18" height="2.5" fill="#f8a5c2" opacity="0.5" rx="1"/>
+                                <rect x="10" y="33" width="12" height="2.5" fill="#f0e8e4" rx="1"/>
+                                <rect x="10" y="38" width="16" height="2.5" fill="#f0e8e4" rx="1"/>
+                                <rect x="10" y="43" width="18" height="2.5" fill="#f0e8e4" rx="1"/>
+                                <!-- Knowledge Base -->
+                                <rect x="36" y="26" width="20" height="16" rx="3" fill="#f7b389" opacity="0.6"/>
+                                <circle cx="42" cy="32" r="3" fill="rgba(255,255,255,0.5)"/>
+                                <circle cx="50" cy="32" r="3" fill="rgba(255,255,255,0.5)"/>
+                                <circle cx="46" cy="38" r="3" fill="rgba(255,255,255,0.5)"/>
+                                <line x1="42" y1="32" x2="50" y2="32" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+                                <line x1="42" y1="32" x2="46" y2="38" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+                                <line x1="50" y1="32" x2="46" y2="38" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+                                <text x="46" y="48" font-size="4" fill="#d4884a" text-anchor="middle" font-family="sans-serif">Context</text>
+                                <!-- Arrow -->
+                                <path d="M58 34 L66 34" stroke="#e8c4b8" stroke-width="1.5"/>
+                                <!-- Stance output -->
+                                <rect x="68" y="14" width="26" height="40" rx="5" fill="url(#go9)"/>
+                                <text x="81" y="28" font-size="5" fill="white" text-anchor="middle" font-family="sans-serif">Stance</text>
+                                <rect x="72" y="34" width="18" height="6" rx="2" fill="rgba(255,255,255,0.4)"/>
+                                <text x="76" y="39" font-size="5" fill="white" font-family="sans-serif">+</text>
+                                <rect x="72" y="42" width="18" height="6" rx="2" fill="rgba(255,255,255,0.25)"/>
+                                <text x="76" y="47" font-size="5" fill="rgba(255,255,255,0.7)" font-family="sans-serif">−</text>
                                 <defs><linearGradient id="go9" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f8a5c2"/><stop offset="100%" stop-color="#f5a962"/></linearGradient></defs>
                             </svg>
                         </div>
                         <div class="pub-content">
-                            <div class="pub-meta">*SEM @ ACL 2023</div>
+                            <div class="pub-meta">*SEM @ ACL 2023 · Workshop</div>
                             <div class="pub-title">
                                 <a href="https://aclanthology.org/2023.starsem-1.43/" target="_blank">Robust Integration of Contextual Information for Cross-Target Stance Detection</a>
                             </div>
@@ -675,20 +808,35 @@
                         </div>
                     </li>
 
-                    <li class="publication-item">
+                    <li class="publication-item" id="pub-structure-batches" data-tags="generalization,comparg">
                         <div class="pub-image">
                             <svg viewBox="0 0 100 68" xmlns="http://www.w3.org/2000/svg">
                                 <rect fill="#fffaf8" width="100" height="68"/>
-                                <rect x="8" y="16" width="14" height="10" rx="3" fill="#f8a5c2"/>
-                                <rect x="8" y="30" width="14" height="10" rx="3" fill="#f8a5c2"/>
-                                <rect x="8" y="44" width="14" height="10" rx="3" fill="#f8a5c2"/>
-                                <rect x="28" y="16" width="14" height="10" rx="3" fill="#f5a962"/>
-                                <rect x="28" y="30" width="14" height="10" rx="3" fill="#f5a962"/>
-                                <rect x="28" y="44" width="14" height="10" rx="3" fill="#f5a962"/>
-                                <path d="M22 21 L28 21 M22 35 L28 35 M22 49 L28 21 M22 21 L28 35" stroke="#e8d4c8" stroke-width="0.8"/>
-                                <path d="M48 34 L58 34" stroke="#e8c4b8" stroke-width="1.5"/>
-                                <rect x="62" y="22" width="28" height="24" rx="4" fill="url(#go10)"/>
-                                <text x="76" y="36" font-size="5" fill="white" text-anchor="middle" font-family="sans-serif">Batch</text>
+                                <!-- Sentence pairs on left -->
+                                <rect x="6" y="10" width="12" height="8" rx="2" fill="#f8a5c2"/>
+                                <rect x="20" y="10" width="12" height="8" rx="2" fill="#f8a5c2" opacity="0.6"/>
+                                <path d="M12 18 L26 18 L19 22" stroke="#e8c4b8" stroke-width="1" fill="none"/>
+                                <rect x="6" y="26" width="12" height="8" rx="2" fill="#f7b389"/>
+                                <rect x="20" y="26" width="12" height="8" rx="2" fill="#f7b389" opacity="0.6"/>
+                                <path d="M12 34 L26 34 L19 38" stroke="#e8c4b8" stroke-width="1" fill="none"/>
+                                <rect x="6" y="42" width="12" height="8" rx="2" fill="#f5a962"/>
+                                <rect x="20" y="42" width="12" height="8" rx="2" fill="#f5a962" opacity="0.6"/>
+                                <path d="M12 50 L26 50 L19 54" stroke="#e8c4b8" stroke-width="1" fill="none"/>
+                                <!-- Structure-aware connections -->
+                                <path d="M32 14 Q40 20 32 30 Q40 40 32 46" stroke="#f7b389" stroke-width="1" stroke-dasharray="2,2" fill="none"/>
+                                <path d="M34 14 Q44 20 34 30 Q44 40 34 46" stroke="#f8a5c2" stroke-width="1" stroke-dasharray="2,2" fill="none"/>
+                                <!-- Arrow -->
+                                <path d="M42 34 L52 34" stroke="#e8c4b8" stroke-width="1.5"/>
+                                <!-- Batch output -->
+                                <rect x="54" y="10" width="40" height="48" rx="5" fill="url(#go10)"/>
+                                <text x="74" y="20" font-size="5" fill="white" text-anchor="middle" font-family="sans-serif">Batch</text>
+                                <!-- Optimized arrangement inside batch -->
+                                <rect x="58" y="26" width="14" height="6" rx="2" fill="rgba(255,255,255,0.5)"/>
+                                <rect x="74" y="26" width="16" height="6" rx="2" fill="rgba(255,255,255,0.4)"/>
+                                <rect x="58" y="34" width="18" height="6" rx="2" fill="rgba(255,255,255,0.45)"/>
+                                <rect x="78" y="34" width="12" height="6" rx="2" fill="rgba(255,255,255,0.35)"/>
+                                <rect x="58" y="42" width="12" height="6" rx="2" fill="rgba(255,255,255,0.4)"/>
+                                <rect x="72" y="42" width="18" height="6" rx="2" fill="rgba(255,255,255,0.5)"/>
                                 <defs><linearGradient id="go10" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f8a5c2"/><stop offset="100%" stop-color="#f5a962"/></linearGradient></defs>
                             </svg>
                         </div>
@@ -715,6 +863,13 @@
                     <li class="item-row">
                         <div class="item-year">2025</div>
                         <div class="item-content">
+                            <div class="item-title">Assessing the Linguistic Competence of Language Models using Classifier-Based Probing</div>
+                            <div class="item-meta">Oberseminar of General Linguistics, University of Tübingen</div>
+                        </div>
+                    </li>
+                    <li class="item-row">
+                        <div class="item-year">2025</div>
+                        <div class="item-content">
                             <div class="item-title">Why and How We Should Study Internal Representations of LMs</div>
                             <div class="item-meta">Data Science Group, Hamburg University</div>
                         </div>
@@ -724,6 +879,14 @@
                         <div class="item-content">
                             <div class="item-title">Linguistic Competence of Language Models and the Role of their Internal Representations</div>
                             <div class="item-meta">Department of Computational Linguistics, University of Zurich</div>
+                        </div>
+                    </li>
+                    <li class="item-row">
+                        <div class="item-year">2024</div>
+                        <div class="item-content">
+                            <div class="item-title">Benchmark the Linguistic Competence of Language Models</div>
+                            <div class="item-meta">Institute for Natural Language Processing, University of Stuttgart</div>
+                            <div class="item-meta">Seminar, IBM Research</div>
                         </div>
                     </li>
                 </ul>
@@ -737,14 +900,21 @@
                     <li class="item-row">
                         <div class="item-year">2025</div>
                         <div class="item-content">
-                            <div class="item-title">KnitTogether25'</div>
+                            <div class="item-title"><a href="https://interplay-workshop.github.io/" target="_blank">INTERPLAY@COLM‘25</a></div>
+                            <div class="item-meta">First Workshop on the Interplay of Model Behavior and Model Internals</div>
+                        </div>
+                    </li>
+                    <li class="item-row">
+                        <div class="item-year">2025</div>
+                        <div class="item-content">
+                            <div class="item-title"><a href="https://knittogether.github.io/kt25/" target="_blank">KnitTogether25'</a></div>
                             <div class="item-meta">The First European CL Research Summit for Junior Researchers · Topic: Bias in NLP and its societal impacts</div>
                         </div>
                     </li>
                     <li class="item-row">
                         <div class="item-year">2024</div>
                         <div class="item-content">
-                            <div class="item-title">PerspectiveArg2024</div>
+                            <div class="item-title"><a href="https://blubberli.github.io/perspective-argument-retrieval.github.io/" target="_blank">PerspectiveArg2024</a></div>
                             <div class="item-meta">First shared task on perspective argument retrieval · ArgMining Workshop @ ACL 2024</div>
                         </div>
                     </li>
@@ -760,14 +930,14 @@
                         <div class="item-year">2020</div>
                         <div class="item-content">
                             <div class="item-title">ARL: Argument Representation Learning</div>
-                            <div class="item-meta">Hasler Foundation · Grant Nr. 21024</div>
+                            <div class="item-meta"><a href="https://www.hasler-foundation.ch/" target="_blank">Hasler Foundation</a> · Grant Nr. 21024</div>
                         </div>
                     </li>
                     <li class="item-row">
                         <div class="item-year">2017</div>
                         <div class="item-content">
                             <div class="item-title">Hirschmann Scholarship Grant</div>
-                            <div class="item-meta">Awarded for above-average sense of purpose and demonstration of social engagement</div>
+                            <div class="item-meta"><a href="https://www.hirschmann-stipendium.ch/de/" target="_blank">Hirschmann Foundation</a> · Awarded for above-average sense of purpose and demonstration of social engagement</div>
                         </div>
                     </li>
                 </ul>
@@ -796,5 +966,68 @@
             <p>© 2025 Andreas Waldis · Lucerne, Switzerland</p>
         </div>
     </footer>
+<script>
+(function () {
+    const pubs = document.querySelectorAll(".publication-item");
+    const chips = document.querySelectorAll(".filter-chip");
+    const interests = document.querySelectorAll(".about-text a.interest");
+    let highlightTimer = null;
+
+    function applyFilter(tag) {
+        pubs.forEach(p => {
+            const tags = (p.dataset.tags || "").split(",");
+            p.style.display = (tag === "all" || tags.includes(tag)) ? "" : "none";
+        });
+        chips.forEach(c => c.classList.toggle("active", c.dataset.filter === tag));
+    }
+
+    // Highlight a publication from URL hash
+    function highlightFromHash() {
+        const hash = window.location.hash;
+        if (!hash) return;
+
+        const target = document.querySelector(hash);
+        if (!target || !target.classList.contains("publication-item")) return;
+
+        // Ensure the target publication is visible
+        target.style.display = "";
+
+        // Remove previous highlights
+        document.querySelectorAll(".publication-item.highlight").forEach(el => {
+            el.classList.remove("highlight");
+        });
+        if (highlightTimer) {
+            clearTimeout(highlightTimer);
+            highlightTimer = null;
+        }
+
+        // Highlight the target publication
+        target.classList.add("highlight");
+        highlightTimer = setTimeout(() => {
+            target.classList.remove("highlight");
+            highlightTimer = null;
+        }, 2000);
+
+        // Scroll it into view with some offset
+        target.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    chips.forEach(chip => {
+        chip.addEventListener("click", () => applyFilter(chip.dataset.filter));
+    });
+
+    interests.forEach(link => {
+        link.addEventListener("click", e => {
+            e.preventDefault();
+            const tag = link.dataset.filter || "all";
+            applyFilter(tag);
+            document.getElementById("publications").scrollIntoView({ behavior: "smooth" });
+        });
+    });
+
+    window.addEventListener("hashchange", highlightFromHash);
+    highlightFromHash();
+})();
+</script>
 </body>
 </html>
